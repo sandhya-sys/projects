@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geolocation</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=ptk28zJQyD0lRJLkOrHyRlul4fMb73ffs6vCzzGn6cih1i9aUXzW7YYjMh7kJJDL80eXDiS3dFdE7YWI9HJje1GnG4QGu7LaoibIaoHuyOO1O_DQAry73iiZZgbxoo_6-z_Y9h9Pes7m_9YjetcpJURferadTYzfq7fyRyRl5zvYODchU3K17Xeed2mBBroerhYVM7LzlOCOUd9OM_Jg1_i4JY-I2V-RPsOw8SgMK-KYYsQ8n0xbw_purKsJFeyC3H-ksnQAb2gNd9-Zg_fvlYgg9i2N47xYem08EPSg_AIkjZe96jLvR-jgRjPm5xBMGSsOrmUqdo4Mmt5XFQaxYoAcrhYFiVREa6Jt_xCm9dJGxP_vmTd6N6J_Y4Euq7k7NnsmgJbMAI_XYn-AX2-M0Eg-PPVyWCLynDAQWvJg-CYLrfUtXMnizkuZDdqy9vfLL3uK5KDCRoOS6hC8Z6bL_XmTvlV_e1eCn3xockuXqLZmgRxvrCT_aDXAuSASSBR42Arjm5v5NrNV6V9Mp7rwfmxNtq41vS-mYYPhvcH-cGbb6raPfh8J2C6lexOEpKGDfd9aDKS6EmiBFOh4W3gGKmfIe4N2CYxUyu4hbcvOWeLXA4u80oxUT39a3FPZ76ibQX73Tovv656tzpfqXq2lOYpoMx39ZqB41iVCZWGRVm10k9B0MgcbaY1J8AgmnV8BNX25tkA2pvfhwNP64ZMTVBes9XF1snhaHqveMvtOO9CxIqSLcACc2JanIUpZBVzZ5QwhKmkizsl0mf9BWe64_mz12EjwnYcoUJFZbxTcBFu7NtnZPCchFUs3oWqniqT4qgY098fWY3VsN4MsKe2xaxOWjiumWL-2aWHmMr3eItVZMOb5Ne4DX-L8bU9YDJRl6qP0X2-t5XvulkMyaDGSi5ry_Ci5oAYrVwtyMx4SzTkT6eS4l9sBf4hXObRuo3KS77nfD-QkN_1b1uMaeh3z3yNtlzaiZPpnkQWuX87y-O_UqrBC1fUcVkk3e47iJatQ2WIgM8jd8EN-0ixcgV5jdxEqkllvmAej_s3x6pFR-IaLEITdgVsfZR7DhyvSi0NkbTvBZJ9REg4MaxAhRlVyTPOsbMBzYg5HTSiInjqRG45848VLHyHenA6cu0S7NJRzTqeZsUADsBIBLma8Nxq-Hj2n3IYXvfO2HCVXAf_ZbcP5WnP8_eDRsfxqjSbJx5VIMZ6HbM5H03zf02VcAHZ1NA" nonce="deb9cd252ff521eda7bcc078327efb5a" charset="UTF-8"></script><style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
+      var map, infoWindow;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 6
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu8xeJScfywsl3RgCif3UgzNWxxdKiYBU">
+    </script>
+	location:<input type = "button"> 
+  </body>
+  
+</html>
